@@ -1,0 +1,30 @@
+# Build configuration for `flet build apk` (Android) and other Flet targets.
+# Desktop users can ignore this file and use requirements.txt.
+[project]
+name = "attendance-reports"
+version = "1.0.0"
+description = "تقارير الحضور والانصراف - Attendance reports from fingerprint PDF exports"
+requires-python = ">=3.10"
+authors = [{ name = "Attendance Reports" }]
+# Mobile dependencies only: Playwright/Chromium is desktop-only (phones use the built-in reportlab renderer),
+# and pdfplumber + pdfminer are bundled in ./vendor so no compiled PDF libraries are needed.
+dependencies = [
+  "flet==0.28.3",
+  "pandas",
+  "openpyxl",
+  "reportlab>=4.0",
+  "charset-normalizer",
+]
+
+[tool.flet]
+org = "kw.edu.school"
+product = "Attendance Reports"
+company = "Attendance Reports"
+copyright = "2026"
+
+[tool.flet.app]
+path = "."
+
+[tool.flet.android.permission]
+"android.permission.READ_EXTERNAL_STORAGE" = true
+"android.permission.WRITE_EXTERNAL_STORAGE" = true
